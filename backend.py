@@ -10,6 +10,13 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 
+# 👉 Enable colors (especially for Windows)
+try:
+    from colorama import init
+    init()
+except:
+    pass
+
 # ---------------- LOG FILE ----------------
 LOG_FILE = "scam_logs.csv"
 
@@ -53,14 +60,23 @@ def ai_predict(msg):
 def detect_language(msg):
     try:
         code = detect(msg)
-        return {
+
+        language_map = {
             "en": "English",
             "hi": "Hindi",
             "ta": "Tamil",
             "te": "Telugu",
             "kn": "Kannada",
-            "ml": "Malayalam"
-        }.get(code, code)
+            "ml": "Malayalam",
+            "mr": "Marathi",
+            "bn": "Bengali",
+            "gu": "Gujarati",
+            "pa": "Punjabi",
+            "ur": "Urdu"
+        }
+
+        return language_map.get(code, f"Unknown ({code})")
+
     except:
         return "Unknown"
 
@@ -111,7 +127,7 @@ def calculate_risk(msg):
 
     return risk, reasons
 
-# ---------------- LOGGING FEATURE ----------------
+# ---------------- LOGGING ----------------
 def log_result(result):
     row = {
         "timestamp": result["meta"]["timestamp"],
@@ -129,6 +145,72 @@ def log_result(result):
         df_row.to_csv(LOG_FILE, index=False)
     else:
         df_row.to_csv(LOG_FILE, mode='a', header=False, index=False)
+
+# ---------------- PRETTY PRINT (COLOR + BOLD) ----------------
+def pretty_print(result):
+    BOLD = "\033[1m"
+    END = "\033[0m"
+
+    RED = "\033[91m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    BLUE = "\033[94m"
+    CYAN = "\033[96m"
+
+    print("\n" + "="*60)
+    print(f"{BOLD}{CYAN}🚨 SCAM DETECTION RESULT{END}")
+    print("="*60)
+
+    # INPUT
+    print(f"\n{BLUE}📩 Message:{END} {BOLD}{result['input']['original_text']}{END}")
+    print(f"{BLUE}🌍 Language:{END} {BOLD}{result['input']['language']}{END}")
+    print(f"{BLUE}🔤 Translated:{END} {BOLD}{result['input']['translated_text']}{END}")
+
+    # AI Prediction
+    print(f"\n{CYAN}🤖 AI PREDICTION{END}")
+    label = result['analysis']['ai_prediction']['label']
+    conf = result['analysis']['ai_prediction']['confidence']
+
+    label_color = GREEN if label == "SAFE" else RED
+    print(f"   Label: {BOLD}{label_color}{label}{END}")
+    print(f"   Confidence: {BOLD}{conf}{END}")
+
+    # Risk
+    print(f"\n{CYAN}⚠️ RISK ANALYSIS{END}")
+    level = result['analysis']['risk']['level']
+    score = result['analysis']['risk']['score']
+
+    if level == "HIGH":
+        risk_color = RED
+    elif level == "MEDIUM":
+        risk_color = YELLOW
+    else:
+        risk_color = GREEN
+
+    print(f"   Level: {BOLD}{risk_color}{level}{END}")
+    print(f"   Score: {BOLD}{score}{END}")
+
+    # Entities
+    print(f"\n{CYAN}🔎 ENTITIES{END}")
+    print(f"   UPI IDs: {BOLD}{result['entities']['upi_ids']}{END}")
+    print(f"   Links: {BOLD}{result['entities']['links']}{END}")
+    print(f"   Amounts: {BOLD}{result['entities']['amounts']}{END}")
+
+    # Insights
+    print(f"\n{CYAN}🧠 INSIGHTS{END}")
+    print(f"   Highlighted: {BOLD}{result['insights']['highlighted_text']}{END}")
+
+    print("\n   Reasons:")
+    for r in result['insights']['reasons']:
+        print(f"   - {BOLD}{r}{END}")
+
+    # Advice
+    advice = result['insights']['advice']
+    advice_color = RED if level == "HIGH" else (YELLOW if level == "MEDIUM" else GREEN)
+
+    print(f"\n💡 Advice: {BOLD}{advice_color}{advice}{END}")
+
+    print("\n" + "="*60)
 
 # ---------------- MAIN FUNCTION ----------------
 def analyze_text(msg):
@@ -191,13 +273,13 @@ def analyze_text(msg):
         }
     }
 
-    # 🔥 LOG EVERY REQUEST
     log_result(result)
-
     return result
 
-# ---------------- TEST ----------------
+# ---------------- RUN ----------------
 if __name__ == "__main__":
     msg = input("Enter message: ")
     result = analyze_text(msg)
-    print(json.dumps(result, indent=4))
+
+    # 🔥 Beautiful CLI Output
+    pretty_print(result)

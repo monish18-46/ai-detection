@@ -1,69 +1,203 @@
 import streamlit as st
 import pandas as pd
+from backend import analyze_text
 
-st.set_page_config(page_title="Scam Detector AI", layout="centered")
+# ---------------- CONFIG ----------------
+st.set_page_config(
+    page_title="Scam Detection AI",
+    page_icon="🚨",
+    layout="wide"
+)
 
-st.title("🚨 AI Scam Message Detector")
-st.write("Paste any message and check if it's SAFE or SCAM.")
+# ---------------- CSS ----------------
+st.markdown("""
+<style>
+.card {
+    padding: 18px;
+    border-radius: 14px;
+    background: #1E1E1E;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    margin-bottom: 15px;
+}
+.kpi {
+    font-size: 22px;
+    font-weight: bold;
+}
+.high {color:#ff4b4b;}
+.medium {color:#ffa500;}
+.low {color:#00c853;}
+</style>
+""", unsafe_allow_html=True)
 
-# ✅ Safe import
-try:
-    from backend import analyze_text
-except Exception as e:
-    st.error(f"Backend import error: {e}")
-    st.stop()
+# ---------------- SIDEBAR ----------------
+st.sidebar.title("⚙️ Controls")
+mode = st.sidebar.radio("Select Mode", ["Single Scan", "Bulk Scan", "Analytics"])
 
-# ---------------- INPUT ----------------
-msg = st.text_area("Enter message:", height=150)
+# ---------------- HEADER ----------------
+st.title("🚨 Scam Detection AI Platform")
 
-# ---------------- BUTTON ----------------
-if st.button("Analyze 🚀"):
+# =========================
+# 🔹 SINGLE SCAN MODE
+# =========================
+if mode == "Single Scan":
 
-    if msg.strip() == "":
-        st.warning("Please enter a message")
-    else:
-        try:
-            result = analyze_text(msg)
-        except Exception as e:
-            st.error(f"Error in backend: {e}")
-            st.stop()
+    st.subheader("🔍 Smart Message Investigation")
 
-        # ---------------- RESULT ----------------
-        st.subheader("🔍 Result")
+    user_input = st.text_area("📩 Enter Message", height=150)
 
-        level = result["analysis"]["risk"]["level"]
-        score = result["analysis"]["risk"]["score"]
-        label = result["analysis"]["ai_prediction"]["label"]
+    if st.button("Analyze Message") and user_input.strip():
+
+        result = analyze_text(user_input)
+
+        st.divider()
+
+        # KPI CARDS
+        c1, c2, c3 = st.columns(3)
+
+        with c1:
+            st.metric("🤖 Prediction", result['analysis']['ai_prediction']['label'])
+
+        with c2:
+            st.metric("⚠️ Risk Score", result['analysis']['risk']['score'])
+
+        with c3:
+            st.metric("🌍 Language", result['input']['language'])
+
+        # RISK BAR
+        st.subheader("📊 Risk Meter")
+        risk_score = result['analysis']['risk']['score']
+        st.progress(min(risk_score / 100, 1.0))
+
+        # WHY
+        st.subheader("🧠 Why this result?")
+        reasons = result['insights']['reasons']
+
+        if reasons:
+            for r in reasons:
+                st.write(f"• {r}")
+        else:
+            st.write("No strong indicators")
+
+        # HIGHLIGHT
+        st.subheader("📝 Highlighted Message")
+        st.code(result['insights']['highlighted_text'])
+
+        # ENTITIES (PRO UI)
+        st.subheader("🔎 Extracted Entities")
+        entities = result['entities']
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.write("💳 UPI IDs")
+            if entities['upi_ids']:
+                for u in entities['upi_ids']:
+                    st.success(u)
+            else:
+                st.info("None")
+
+        with col2:
+            st.write("🌐 Links")
+            if entities['links']:
+                for l in entities['links']:
+                    st.markdown(f"[🔗 Open Link]({l})")
+            else:
+                st.info("None")
+
+        with col3:
+            st.write("💰 Amounts")
+            if entities['amounts']:
+                for a in entities['amounts']:
+                    st.success(a)
+            else:
+                st.info("None")
+
+        # TRANSLATION
+        st.subheader("🔤 Translated Text")
+        st.write(result['input']['translated_text'])
+
+        # FINAL DECISION
+        st.subheader("💡 Final Advice")
+        level = result['analysis']['risk']['level']
+        advice = result['insights']['advice']
 
         if level == "HIGH":
-            st.error(f"🚨 HIGH RISK ({score})")
+            st.error(advice)
         elif level == "MEDIUM":
-            st.warning(f"⚠️ MEDIUM RISK ({score})")
+            st.warning(advice)
         else:
-            st.success(f"✅ LOW RISK ({score})")
+            st.success(advice)
 
-        st.write(f"**AI Prediction:** {label}")
+        # MINI ANALYTICS
+        st.subheader("📈 Quick Insight")
+        chart_data = {
+            "Risk Score": result['analysis']['risk']['score'],
+            "AI Confidence": int(result['analysis']['ai_prediction']['confidence'] * 100)
+        }
+        st.bar_chart(chart_data)
 
-        # ---------------- DETAILS ----------------
-        st.subheader("📊 Details")
-        st.json(result["analysis"])
+# =========================
+# 🔹 BULK SCAN MODE
+# =========================
+elif mode == "Bulk Scan":
 
-        st.subheader("🧠 Insights")
-        st.write("**Advice:**", result["insights"]["advice"])
-        st.write("**Reason:**", result["insights"]["explanation"])
+    st.subheader("📂 Upload CSV File")
 
-        st.write("**Highlighted Text:**")
-        st.markdown(result["insights"]["highlighted_text"])
+    uploaded_file = st.file_uploader("Upload CSV with 'text' column")
 
-        # ---------------- ENTITIES ----------------
-        st.subheader("🔎 Detected Entities")
-        st.json(result["entities"])
+    if uploaded_file:
+        df = pd.read_csv(uploaded_file)
 
-        # ---------------- LOG VIEW ----------------
-        st.subheader("📁 Latest Logs Preview")
+        if "text" not in df.columns:
+            st.error("CSV must contain 'text' column")
+        else:
+            results = []
 
-        try:
-            df = pd.read_csv("scam_logs.csv")
-            st.dataframe(df.tail(10))
-        except:
-            st.info("No logs found yet.")
+            for msg in df["text"]:
+                res = analyze_text(str(msg))
+                results.append({
+                    "text": msg,
+                    "prediction": res['analysis']['ai_prediction']['label'],
+                    "risk": res['analysis']['risk']['level']
+                })
+
+            result_df = pd.DataFrame(results)
+
+            st.success("✅ Scan Completed")
+            st.dataframe(result_df)
+
+            st.download_button(
+                "📥 Download Results",
+                result_df.to_csv(index=False),
+                "scan_results.csv"
+            )
+
+# =========================
+# 🔹 ANALYTICS MODE
+# =========================
+elif mode == "Analytics":
+
+    st.subheader("📊 Analytics Dashboard")
+
+    try:
+        df = pd.read_csv("scam_logs.csv")
+
+        if df.empty:
+            st.warning("No data yet")
+        else:
+            total = len(df)
+            high = len(df[df["risk_level"] == "HIGH"])
+            medium = len(df[df["risk_level"] == "MEDIUM"])
+            low = len(df[df["risk_level"] == "LOW"])
+
+            c1, c2, c3, c4 = st.columns(4)
+
+            c1.metric("Total Scans", total)
+            c2.metric("High Risk", high)
+            c3.metric("Medium Risk", medium)
+            c4.metric("Low Risk", low)
+
+            st.subheader("Risk Distribution")
+            st.bar_chart(df["risk_level"].value_counts())
+
+    except:
+        st.warning("No log file found yet")

@@ -1,3 +1,9 @@
 timestamp,text,language,risk_level,risk_score,ai_label,confidence
 2026-04-24T22:25:16.782865,urgent do ur kyc,fr,HIGH,45,SCAM,0.76
 2026-04-24T22:28:43.445786,"Dear Customer, apka Bank Account block hone wala hai! KYC document pending hai. Please immediately update karein: bit.ly/bank-kyc",English,HIGH,75,SCAM,1.0
+2026-04-25T02:30:05.703040,"Dear user, aapka account verify nahi hai. Click karo warna block ho jayega.”
+
+",English,HIGH,50,SCAM,0.97
+2026-04-25T04:30:37.972736,do ur kyc urgent for winning price,English,HIGH,45,SCAM,0.58
+2026-04-25T04:33:02.786786,do your kyc,Unknown (es),HIGH,20,SCAM,0.82
+2026-04-25T04:33:02.551394,do your kyc,Unknown (tr),HIGH,20,SCAM,0.82
