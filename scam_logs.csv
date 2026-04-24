@@ -1,0 +1,3 @@
+timestamp,text,language,risk_level,risk_score,ai_label,confidence
+2026-04-24T22:25:16.782865,urgent do ur kyc,fr,HIGH,45,SCAM,0.76
+2026-04-24T22:28:43.445786,"Dear Customer, apka Bank Account block hone wala hai! KYC document pending hai. Please immediately update karein: bit.ly/bank-kyc",English,HIGH,75,SCAM,1.0
