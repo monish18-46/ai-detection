@@ -7,3 +7,41 @@ timestamp,text,language,risk_level,risk_score,ai_label,confidence
 2026-04-25T04:30:37.972736,do ur kyc urgent for winning price,English,HIGH,45,SCAM,0.58
 2026-04-25T04:33:02.786786,do your kyc,Unknown (es),HIGH,20,SCAM,0.82
 2026-04-25T04:33:02.551394,do your kyc,Unknown (tr),HIGH,20,SCAM,0.82
+2026-04-25T04:54:59.087211,"Dear user, aapka account verify nahi hai. Click karo warna block ho jayega",English,HIGH,50,SCAM,0.97
+2026-04-25T11:03:07.417147,"Your SBI account has been debited with ₹9,999. To verify refund, click: hxxp://sbi-secure-pay[.]in/login
+UPI ID: refund@sbi
+Failure to act in 10 minutes will permanently block your account.”",English,HIGH,65,SCAM,1.0
+2026-04-25T11:05:09.997297,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”
+",English,HIGH,105,SCAM,1.0
+2026-04-25T11:10:11.460150,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:11:38.847578,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:15:38.209494,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:16:48.959386,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:21:19.777536,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:27:34.667726,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:29:06.755649,"Your SBI account has been debited with ₹9,999. To verify refund, click: hxxp://sbi-secure-pay[.]in/login
+UPI ID: refund@sbi
+Failure to act in 10 minutes will permanently block your account.”",English,HIGH,65,SCAM,1.0
+2026-04-25T11:32:43.251614,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:33:06.057181,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T11:33:31.581596,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund:12",English,HIGH,105,SCAM,1.0
