@@ -48,3 +48,64 @@ Amount pending refund:12",English,HIGH,105,SCAM,1.0
 2026-04-25T12:11:43.550691,urgent kyc,Unknown (sv),HIGH,45,SCAM,0.76
 2026-04-25T12:13:19.683861,"urgent do ur kyc
 ",Unknown (sv),HIGH,45,SCAM,0.76
+2026-04-25T12:55:04.548155,Hey! Check out our AMAZING 70% OFF sale NOW!!!,English,HIGH,0,SCAM,0.73
+2026-04-25T13:03:08.866689,hi hello,Unknown (cy),LOW,0,SAFE,0.5
+2026-04-25T13:03:44.353993,urgent do ur kyc,Unknown (sv),HIGH,45,SCAM,0.76
+2026-04-25T13:03:47.053244,"Dear Customer, apka Bank Account block hone wala hai! KYC document pending hai. Please immediately update karein: bit.ly/bank-kyc",English,HIGH,75,SCAM,1.0
+2026-04-25T13:03:49.305468,"Dear user, aapka account verify nahi hai. Click karo warna block ho jayega.”
+
+",English,HIGH,50,SCAM,0.97
+2026-04-25T13:03:50.337008,do ur kyc urgent for winning price,English,HIGH,45,SCAM,0.58
+2026-04-25T13:03:51.387084,do your kyc,Unknown (tr),HIGH,20,SCAM,0.82
+2026-04-25T13:03:52.262011,do your kyc,Unknown (tr),HIGH,20,SCAM,0.82
+2026-04-25T13:03:53.362171,"Dear user, aapka account verify nahi hai. Click karo warna block ho jayega",English,HIGH,50,SCAM,0.97
+2026-04-25T13:03:54.383477,"Your SBI account has been debited with ₹9,999. To verify refund, click: hxxp://sbi-secure-pay[.]in/login
+UPI ID: refund@sbi
+Failure to act in 10 minutes will permanently block your account.”",English,HIGH,65,SCAM,1.0
+2026-04-25T13:03:55.620998,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”
+",English,HIGH,105,SCAM,1.0
+2026-04-25T13:03:56.479175,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:03:57.404111,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:03:58.336667,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:03:59.176555,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:00.263331,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:01.192739,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:02.185722,"Your SBI account has been debited with ₹9,999. To verify refund, click: hxxp://sbi-secure-pay[.]in/login
+UPI ID: refund@sbi
+Failure to act in 10 minutes will permanently block your account.”",English,HIGH,65,SCAM,1.0
+2026-04-25T13:04:03.028020,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:03.922851,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund: ₹12,500”",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:04.972046,"“Alert: Your HDFC Bank account is temporarily blocked. Verify immediately at: https://example[.]com/hdfc-update⁠�
+UPI support ID: support@bank-check
+Amount pending refund:12",English,HIGH,105,SCAM,1.0
+2026-04-25T13:04:06.007970,urgent kyc,Unknown (sv),HIGH,45,SCAM,0.76
+2026-04-25T13:04:06.917854,"urgent do ur kyc
+",Unknown (pl),HIGH,45,SCAM,0.76
+2026-04-25T13:04:07.849564,Hey! Check out our AMAZING 70% OFF sale NOW!!!,English,HIGH,0,SCAM,0.73
+2026-04-25T13:04:08.888804,hi hello,Unknown (cy),LOW,0,SAFE,0.5
+2026-04-25T13:04:49.491094,hello ,Unknown (it),LOW,0,SAFE,0.5
+2026-04-25T13:05:31.222437,"Hi Grandma, it’s your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp",English,HIGH,0,SCAM,0.78
+2026-04-25 13:10:53.687586,"Hi Grandma, it’s your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp",0,FRAUD
+2026-04-25 13:13:06.861026,"Hi Grandma, it’s your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp",0,FRAUD
+2026-04-25T13:14:49.861073,"Hi Grandma, it’s your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp",English,HIGH,0,SCAM,0.78
+2026-04-25T13:22:16.853919,"Hi Grandma, it’s your grandson. I got into a car accident and need money for the hospital, please send $500 to this CashApp",English,HIGH,0,SCAM,0.78
+2026-04-25T13:24:52.735982,hello how r u,Unknown (cy),LOW,0,SAFE,0.5
+2026-04-25T13:25:33.477860,hello how r u are u fine grandma,English,LOW,0,SAFE,0.5
